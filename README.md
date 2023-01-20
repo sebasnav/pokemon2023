@@ -1,3 +1,6 @@
+Antes de ejecutar el proyecto a traves de "ng serve -o"
+debe ejecutar el comando "npm i" para instalar las dependencias necesarias del proyecto.
+
 # PokemonApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
