@@ -1,0 +1,25 @@
+<div class="pokemon_detail-card">
+  <p class="pokemon_detail-hp">
+    <span>HP</span>
+    {{pokeService.pokemonData.stats[0].base_stat}}
+  </p>
+  <img [src]="pokeService.pokemonData.sprites.front_default">
+  <h2 class="pokemon_detail-name">{{pokeService.pokemonData.name}}</h2>
+  <div class="pokemon_detail-type">
+    <span>{{pokeService.pokemonData.types[0].type.name}}</span>
+  </div>
+  <div class="pokemon_detail-stats">
+    <div>
+      <h3>{{pokeService.pokemonData.stats[1].base_stat}}</h3>
+      <p>Attack</p>
+    </div>
+    <div>
+      <h3>{{pokeService.pokemonData.stats[2].base_stat}}</h3>
+      <p>Defense</p>
+    </div>
+    <div>
+      <h3>{{pokeService.pokemonData.stats[5].base_stat}}</h3>
+      <p>Speed</p>
+    </div>
+  </div>
+</div>

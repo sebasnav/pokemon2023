@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.header_nav-bar {
+  position: absolute;
+  width: 100%;
+  max-width: 1250px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+
+}
+.nav_bar-logo {
+  display: inline-block;
+  position: absolute;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 270px;
+  font-size: 50px;
+  line-height: 68px;
+  top: 35px;
+  left: 70px;
+  letter-spacing: 2px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transform: rotate(-5deg);
+  transition: 0.3s ease, left 0.4s ease;
+  z-index: 10;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    height: 10px;
+    width: 40px;
+    background-color: #c11d1e
+  }
+  &:hover {
+    transform: rotate(-8deg) scale(1.15);
+    transition: 0.3s cubic-bezier(0.3, 0.2, 0, 2);
+  }
+}
+.nav_bar-links {
+  display: inline-block;
+  position: relative;
+  float: right;
+  text-transform: uppercase;
+  padding: 45px 20px;
+}
+.nav_bar-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 5px 15px 10px;
+  font-size: 15px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  transition: 0.4s ease, padding 0.3s ease;
+  backface-visibility: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 49%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 71%;
+    background-color: #000;
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+  &:nth-child(1)::before {
+    width: 80%;
+  }
+  &:nth-child(4)::before {
+    width: 76%;
+  }
+  &:hover::before {
+    opacity: 1;
+    bottom: 8px;
+  }
+}
+
+@media (max-width: 857px) {
+  .nav_bar-logo {
+    display: none;
+  }
+
+  .nav_bar-links {
+    float: inherit;
+    display: flex;
+    justify-content: center;
+  }
+}

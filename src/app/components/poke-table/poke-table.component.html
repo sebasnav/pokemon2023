@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" />
+
+
+<body class="body-container">
+
+
+    <div class="serch_pokemon-container">
+        <form class="search_pokemon-form">
+            <input class="search_pokemon-input" list="pokemonList" name="pokemonList" placeholder="Search pokemon..."
+                [(ngModel)]="searchPokemonByName">
+            <datalist id="pokemonList">
+                <option *ngFor="let pokemon of getPokemonsFiltered(pokemonList)" value="{{pokemon.name}}">
+            </datalist>
+        </form>
+        <button class="remove_filter-button" (click)="removeFilterPokemonByName()">
+            <i class='bx bx-x-circle clear_filter-icon'></i>
+        </button>
+    </div>
+
+    <div class="abc_quantity-container">
+        <ul class="abc_index">
+            <li *ngFor="let letter of alphabet" (mouseover)="numberOfPokemons(letter)"
+                (mouseout)="pokemonQuantity = null">
+                <a href="#">{{letter}}</a>
+            </li>
+        </ul>
+
+        <div *ngIf="pokemonQuantity" class="pokemon_quantity">
+            <p>Cantidad de pokemons: {{pokemonQuantity}}</p>
+        </div>
+        <div *ngIf="pokemonQuantity !== null && pokemonQuantity == 0" class="pokemon_quantity">
+            <p>No pokemon starts with this letter</p>
+        </div>
+    </div>
+
+
+    <div class="pokemon_card-main-container">
+        <div class="pokemon_cards-container">
+
+            <div *ngFor="let pokemon of getPokemonsFiltered(pokemonList) | paginate: {itemsPerPage: 10, currentPage: page}"
+                class="pokemon_card -green" (click)="openPokemonDetails(pokemon)">
+                <div class="pokemon_card-info">
+                    <span class="number">#{{pokemon.order}}</span>
+                    <p class="name">{{pokemon.name}}</p>
+                    <div class="kinds">
+                        <span *ngIf="pokemon.types[0].type.name == 'bug'"
+                            class="kind -bug">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'grass'"
+                            class="kind -grass">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'ground'"
+                            class="kind -ground">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'poison'"
+                            class="kind -poison">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'electric'"
+                            class="kind -electric">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'fighting'"
+                            class="kind -fighting">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'water' || pokemon.types[0].type.name == 'ice'"
+                            class="kind -water">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'rock'"
+                            class="kind -rock">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'fairy'"
+                            class="kind -fairy">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'normal'"
+                            class="kind -normal">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'psychic'"
+                            class="kind -psychic">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'ghost'"
+                            class="kind -ghost">{{pokemon.types[0].type.name}}</span>
+                        <span *ngIf="pokemon.types[0].type.name == 'fire' || pokemon.types[0].type.name == 'dragon'"
+                            class="kind -fire">{{pokemon.types[0].type.name}}</span>
+                    </div>
+                </div>
+                <div class="image">
+                    <img [src]="pokemon.sprites.front_default" alt="pokemon">
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="pokemonSelected" class="pokemon_detail-container">
+            <app-poke-detail></app-poke-detail>
+        </div>
+    </div>
+    <div class="pagination_container">
+        <pagination-controls class="pagination" (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next">
+        </pagination-controls>
+    </div>
+
+</body>
